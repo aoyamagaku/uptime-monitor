@@ -5,3 +5,8 @@ from app.config import settings
 
 engine = create_engine(settings.database_url)
 SessionFactory = sessionmaker(bind=engine)
+
+
+def get_db():
+    with SessionFactory() as session:
+        yield session
